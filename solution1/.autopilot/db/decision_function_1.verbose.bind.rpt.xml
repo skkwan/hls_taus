@@ -1,0 +1,271 @@
+<profile>
+
+<section name = "Vivado HLS Report for 'decision_function_1'" level="0">
+<item name = "Date">Thu Oct 24 15:01:49 2019
+</item>
+<item name = "Version">2018.2 (Build 2258646 on Thu Jun 14 20:25:20 MDT 2018)</item>
+<item name = "Project">hls_taus</item>
+<item name = "Solution">solution1</item>
+<item name = "Product family">virtex7</item>
+<item name = "Target device">xc7vx690tffg1927-2</item>
+</section>
+
+<section name = "Performance Estimates" level="0">
+<item name = "Timing (ns)">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="4">Clock, Target, Estimated, Uncertainty</keys>
+<column name="ap_clk">4.12, 3.582, 0.51</column>
+</table>
+</item>
+</section>
+</item>
+<item name = "Latency (clock cycles)">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="6">, min, max, min, max, Type</keys>
+<column name="">20, 20, 1, 1, function</column>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="0">
+<keys size="7">Instance, Module, min, max, min, max, Type</keys>
+<column name="grp_decision_function_fu_536">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_682">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_828">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_974">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_1120">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_1266">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_1412">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_1558">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_1704">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_1850">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_1996">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_2133">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_2270">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_2407">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_2544">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_2681">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_2818">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_2955">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_3092">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_3229">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_3366">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_3503">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_3640">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_3777">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_3914">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_4051">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_4188">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_4325">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_4462">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_4599">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_4736">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_4873">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_5010">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_5147">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_5284">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_5421">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_5558">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_5695">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_5832">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_5969">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_6106">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_6243">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_6380">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_6517">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_6654">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_6791">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_6928">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_7065">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_7202">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_7339">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_7476">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_7613">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_7750">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_7887">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_8024">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_8161">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_8298">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_8435">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_8572">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_8709">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_8846">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_8983">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_9120">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_9257">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_9394">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_9531">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_9668">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_9805">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_9942">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_10079">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_10216">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_10353">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_10490">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_10627">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_10764">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_10901">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_11038">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_11175">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_11312">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_11449">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_11586">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_11723">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_11860">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_11997">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_12134">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_12271">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_12408">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_12545">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_12682">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_12819">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_12956">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_13093">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_13230">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_13367">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_13504">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_13641">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_13778">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_13915">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_14052">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_14189">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_14326">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_14463">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_14600">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_14737">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_14874">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_15011">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_15148">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_15285">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_15422">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_15559">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_15696">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_15833">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_15970">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_16107">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_16244">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_16381">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_16518">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_16655">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_16792">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_16929">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_17066">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_17203">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_17340">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_17477">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_17614">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_17751">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_17888">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_18025">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_18162">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_18299">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_18436">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_18573">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_18710">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_18847">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_18984">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_19121">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_19258">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_19395">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_19532">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_19669">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_19806">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_19943">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_20080">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_20217">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_20354">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_20491">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_20628">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_20765">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_20902">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_21039">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_21176">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_21313">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_21450">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_21587">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_21724">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_21861">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_21998">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_22135">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_22272">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_22409">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_22546">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_22683">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_22820">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_22957">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_23094">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_23231">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_23368">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_23505">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_23642">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_23779">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_23916">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_24053">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_24190">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_24327">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_24464">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_24601">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_24738">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_24875">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_25012">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_25149">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_25286">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_25423">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_25560">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_25697">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_25834">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_25971">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_26108">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_26245">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_26382">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_26519">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_26656">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_26793">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_26930">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_27067">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_27204">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_27341">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_27478">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_27615">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_27752">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_27889">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_28026">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_28163">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_28300">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_28437">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_28574">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_28711">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_28848">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_28985">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_29122">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_29259">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_29396">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_29533">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_29670">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_29807">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_29944">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_30081">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_30218">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_30355">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_30492">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_30629">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_30766">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_30903">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_31040">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_31177">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_31314">decision_function, 9, 9, 1, 1, function</column>
+<column name="grp_decision_function_fu_31451">decision_function, 9, 9, 1, 1, function</column>
+</table>
+</item>
+<item name = "Loop"><table name="" hasTotal="0">
+<keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
+</table>
+</item>
+</section>
+</item>
+</section>
+</item>
+</section>
+</profile>

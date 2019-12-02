@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xd:acceleratorMap xmlns:xd="http://www.xilinx.com/xidane" xd:functionName="myproject" xd:componentRef="myproject" xd:initiationInterval="1" xd:clockPeriod="4.120" xd:sequential="true" xd:hostMachine="64" xd:reset="control">
+  <xd:returnValue xd:interfaceRef="ap_return" xd:busTypeRef="register" xd:dataWidth="18"/>
+  <xd:controlReg xd:name="control" xd:interfaceRef="ap_ctrl" xd:busTypeRef="acc_handshake" xd:type="acc_handshake"/>
+  <xd:arg xd:name="x[0]" xd:originalName="x0" xd:direction="in" xd:interfaceRef="x_0_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="18" xd:arraySize="1"/>
+  <xd:arg xd:name="x[1]" xd:originalName="x1" xd:direction="in" xd:interfaceRef="x_1_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="18" xd:arraySize="1"/>
+  <xd:arg xd:name="x[2]" xd:originalName="x2" xd:direction="in" xd:interfaceRef="x_2_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="18" xd:arraySize="1"/>
+  <xd:arg xd:name="x[3]" xd:originalName="x3" xd:direction="in" xd:interfaceRef="x_3_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="18" xd:arraySize="1"/>
+  <xd:arg xd:name="x[4]" xd:originalName="x4" xd:direction="in" xd:interfaceRef="x_4_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="18" xd:arraySize="1"/>
+  <xd:arg xd:name="x[5]" xd:originalName="x5" xd:direction="in" xd:interfaceRef="x_5_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="18" xd:arraySize="1"/>
+  <xd:arg xd:name="x[6]" xd:originalName="x6" xd:direction="in" xd:interfaceRef="x_6_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="18" xd:arraySize="1"/>
+  <xd:arg xd:name="x[7]" xd:originalName="x7" xd:direction="in" xd:interfaceRef="x_7_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="18" xd:arraySize="1"/>
+  <xd:arg xd:name="x[8]" xd:originalName="x8" xd:direction="in" xd:interfaceRef="x_8_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="18" xd:arraySize="1"/>
+  <xd:arg xd:name="score[0]" xd:originalName="score0" xd:direction="out" xd:interfaceRef="score_0_V" xd:busTypeRef="register" xd:handshakeRef="ap_vld" xd:dataWidth="18" xd:firstOut="21" xd:arraySize="1"/>
+  <xd:arg xd:name="score[1]" xd:originalName="score1" xd:direction="in" xd:interfaceRef="score_1_V" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="18" xd:firstOut="21" xd:arraySize="1"/>
+  <xd:latencyEstimates xd:best-case="21" xd:worst-case="21" xd:average-case="21"/>
+  <xd:resourceEstimates xd:LUT="2070828" xd:FF="1105961" xd:BRAM="0" xd:DSP="1"/>
+</xd:acceleratorMap>

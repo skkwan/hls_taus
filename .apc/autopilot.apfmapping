@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
+  <source>
+    <originFiles name="parameters.h" path="/data/ojalvo/vivado-devel/hls_taus/parameters.h"/>
+    <originFiles name="myproject_test.cpp" path="/data/ojalvo/vivado-devel/hls_taus/myproject_test.cpp"/>
+    <originFiles name="myproject.h" path="/data/ojalvo/vivado-devel/hls_taus/myproject.h"/>
+    <originFiles name="PF_Tau.hpp" path="/data/ojalvo/vivado-devel/hls_taus/PF_Tau.hpp"/>
+    <originFiles name="PF_Tau.cc" path="/data/ojalvo/vivado-devel/hls_taus/PF_Tau.cc"/>
+    <originFiles name="BDT.h" path="/data/ojalvo/vivado-devel/hls_taus/BDT.h"/>
+    <originFiles name="myproject.cpp" path="/data/ojalvo/vivado-devel/hls_taus/myproject.cpp"/>
+  </source>
+  <testbench/>
+</autopilotfilemapping:AutoPilotFileMapping>
