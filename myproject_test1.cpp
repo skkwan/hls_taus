@@ -13,7 +13,7 @@ using namespace std;
 
 vector<vector<unsigned int>> read_vars_from_file(void){
 	ifstream inFile;
-	inFile.open("input.txt");//open the input file
+	inFile.open("input_realVals.txt");//open the input file
 	stringstream strStream;
 	strStream << inFile.rdbuf();//read the file
 	string str = strStream.str();//str holds the content of the file
@@ -47,9 +47,9 @@ vector<vector<unsigned int>> read_vars_from_file(void){
 
 void unpack_input_vars(vector<unsigned int>  vars_raw, input_arr_t input_vars){
 	for (unsigned int idx_out = 0; idx_out < n_features; idx_out++){
-		//input_vars[idx_out] = vars_raw[idx_out];
-		input_vars[idx_out] = (vars_raw[idx_out] & 0x3FFFF);
-		cout << input_vars[idx_out] << endl;
+	  //input_vars[idx_out] = vars_raw[idx_out];
+	  input_vars[idx_out] = (vars_raw[idx_out] & 0x3FFFF); // Only keep the 18 least significant bits
+	  cout << input_vars[idx_out] << endl;
 	}
 }
 
@@ -57,13 +57,13 @@ int main(){
 	vector< vector< unsigned int> > vars_raw = read_vars_from_file();
 	cout<<"size:"<<vars_raw.size()<<endl;
 	for (int i = 0; i < events_in_file; i++){
-		for (int j = 0; j < taus_per_event; j++){
-			input_arr_t v;
-			unpack_input_vars(vars_raw[j], v);
-			score_arr_t score;
-			myproject(v, score);
-			cout << "score:\t" << score[0] << endl;
-		}	
+	  for (int j = 0; j < taus_per_event; j++){
+	    input_arr_t v;
+	    unpack_input_vars(vars_raw[j], v);
+	    score_arr_t score;
+	    myproject(v, score);
+	    cout << "score:\t" << score[0] << endl;
+	  }	
 	}
 	return 0;
 }
