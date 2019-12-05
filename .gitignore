@@ -1,0 +1,9 @@
+*~
+*.adb
+*.xml
+*.rpt
+*.tcl
+*.bc
+*.autopilot*
+*.log
+*.json
