@@ -108,6 +108,8 @@ int writeTableToText(vector<vector<Double_t>> table,
     {
       for (int j = 0; j < table[i].size(); j++)
 	{
+	  //	  fprintf(fp, "%08x", (unsigned int) table[i][j] & 0xFF);
+	  //	  printf("Converting %f to %i, which is %08x in hex.\n", table[i][j], (unsigned int) table[i][j], (unsigned int) table[i][j] & 0xFF);
 	  fprintf(fp, "%f", table[i][j]);
 	  // Put space in-between the entries
 	  if (j < (table[i].size() - 1))
@@ -118,6 +120,7 @@ int writeTableToText(vector<vector<Double_t>> table,
       if (i < (table.size() - 1))
 	fprintf(fp, "\n");
     }
+  fprintf(fp, "\n");
 
   return 0;
 }

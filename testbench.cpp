@@ -9,9 +9,15 @@
 
 using namespace std;
 #define events_in_file (1)
-#define taus_per_event (2)
+#define taus_per_event (5)
 
-vector<vector<unsigned int>> read_vars_from_file(void){
+
+/***********************************************************************/
+
+/* Returns a vector of vector of floats, read in from the specified 
+   text file. */
+
+vector<vector<float>> read_vars_from_file(void){
 	ifstream inFile;
 	inFile.open("input_realVals.txt");//open the input file
 	stringstream strStream;
@@ -22,19 +28,19 @@ vector<vector<unsigned int>> read_vars_from_file(void){
 	vector<string> tokens; // Create vector to hold our words
 	while (ss >> buf)
 		tokens.push_back(buf);
-	vector<vector<unsigned int> > v;
+	vector<vector<float> > v;
 	int tokens_per_event = taus_per_event*n_features;
 	for (int i = 0; i < events_in_file; i++){
 		if (tokens[i * tokens_per_event] == "#Event"){
 			cout << "Processing event #: " << tokens[i * tokens_per_event + 1] << endl;
 		}
 		for (int j = 0; j < taus_per_event; j++){
-			vector<unsigned int>  vars;
+			vector<float> vars;
 			for (int k = 0; k < n_features; k++){
 				unsigned int idx = i * tokens_per_event + 2 + j*n_features + k;
 				stringstream ss2;
-				unsigned int x;
-				ss2 << hex << tokens[idx].c_str() ;
+				float x;
+				ss2 << tokens[idx].c_str() ;
 				ss2 >> x;
 				cout << x << endl;
 				vars.push_back(x);
@@ -45,16 +51,28 @@ vector<vector<unsigned int>> read_vars_from_file(void){
 	return v;
 }
 
-void unpack_input_vars(vector<unsigned int>  vars_raw, input_arr_t input_vars){
+/***********************************************************************/
+
+/* Takes a vector of floats vars_raw and stores them in an input_arr_t
+   object input_vars. */
+
+void unpack_input_vars(vector<float>  vars_raw, input_arr_t input_vars){
 	for (unsigned int idx_out = 0; idx_out < n_features; idx_out++){
 	  //input_vars[idx_out] = vars_raw[idx_out];
-	  input_vars[idx_out] = (vars_raw[idx_out] & 0x3FFFF); // Only keep the 18 least significant bits
-	  cout << input_vars[idx_out] << endl;
+	  cout << "Raw value:\t" <<vars_raw[idx_out] << ".\t";
+	  //	  input_vars[idx_out] = (vars_raw[idx_out] & 0x3FFFF); // Only keep the 18 least significant bits
+	  input_vars[idx_out] = vars_raw[idx_out]; // No truncation of significant bits
+	  cout << "Converting to:\t" << input_vars[idx_out] << ".\t";
 	}
+	cout << endl;
 }
 
+/***********************************************************************/
+
+
+
 int main(){
-	vector< vector< unsigned int> > vars_raw = read_vars_from_file();
+	vector< vector<float> > vars_raw = read_vars_from_file();
 	cout<<"size:"<<vars_raw.size()<<endl;
 	for (int i = 0; i < events_in_file; i++){
 	  for (int j = 0; j < taus_per_event; j++){
@@ -67,3 +85,5 @@ int main(){
 	}
 	return 0;
 }
+
+/***********************************************************************/

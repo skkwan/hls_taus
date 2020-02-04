@@ -5,12 +5,12 @@
 ############################################################
 open_project hls_taus
 set_top myproject
-add_files BDT.h -cflags "-std=c++0x"
+add_files hls_taus/BDT.h -cflags "-std=c++0x"
 #add_files hls_taus/PF_Tau.cc
 #add_files hls_taus/PF_Tau.hpp
 add_files hls_taus/myproject.cpp -cflags "-std=c++0x"
 add_files hls_taus/myproject.h
-add_files -tb hls_taus/myproject_test1.cpp -cflags "-std=c++0x"
+add_files -tb hls_taus/testbench.cpp -cflags "-std=c++0x"
 add_files hls_taus/parameters.h
 open_solution "solution1"
 set_part {xc7vx690tffg1927-2} -tool vivado
