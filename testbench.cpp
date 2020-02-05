@@ -60,8 +60,9 @@ void unpack_input_vars(vector<float>  vars_raw, input_arr_t input_vars){
 	for (unsigned int idx_out = 0; idx_out < n_features; idx_out++){
 	  //input_vars[idx_out] = vars_raw[idx_out];
 	  cout << "Raw value:\t" <<vars_raw[idx_out] << ".\t";
-	  //	  input_vars[idx_out] = (vars_raw[idx_out] & 0x3FFFF); // Only keep the 18 least significant bits
-	  input_vars[idx_out] = vars_raw[idx_out]; // No truncation of significant bits
+	  //  input_vars[idx_out] = (vars_raw[idx_out] & 0x3FFFF); // Only keep the 18 least significant bits
+	  // Conversion to input_t precision:
+	  input_vars[idx_out] = vars_raw[idx_out]; 
 	  cout << "Converting to:\t" << input_vars[idx_out] << ".\t";
 	}
 	cout << endl;
