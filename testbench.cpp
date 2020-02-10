@@ -3,13 +3,14 @@
 #include "myproject.h"
 #include <vector>
 #include <array>
+#include <cstdio>
 #include <iostream>
 #include <fstream>
 #include <string>
 
 using namespace std;
 #define events_in_file (1)
-#define taus_per_event (5)
+#define taus_per_event (330)
 
 
 /***********************************************************************/
@@ -20,6 +21,7 @@ using namespace std;
 vector<vector<float>> read_vars_from_file(void){
 	ifstream inFile;
 	inFile.open("input_realVals.txt");//open the input file
+
 	stringstream strStream;
 	strStream << inFile.rdbuf();//read the file
 	string str = strStream.str();//str holds the content of the file
@@ -42,8 +44,8 @@ vector<vector<float>> read_vars_from_file(void){
 				float x;
 				ss2 << tokens[idx].c_str() ;
 				ss2 >> x;
-				cout << x << endl;
 				vars.push_back(x);
+
 			}
 			v.push_back(vars);
 		}
@@ -57,15 +59,20 @@ vector<vector<float>> read_vars_from_file(void){
    object input_vars. */
 
 void unpack_input_vars(vector<float>  vars_raw, input_arr_t input_vars){
-	for (unsigned int idx_out = 0; idx_out < n_features; idx_out++){
-	  //input_vars[idx_out] = vars_raw[idx_out];
-	  cout << "Raw value:\t" <<vars_raw[idx_out] << ".\t";
-	  //  input_vars[idx_out] = (vars_raw[idx_out] & 0x3FFFF); // Only keep the 18 least significant bits
-	  // Conversion to input_t precision:
-	  input_vars[idx_out] = vars_raw[idx_out]; 
-	  cout << "Converting to:\t" << input_vars[idx_out] << ".\t";
-	}
-	cout << endl;
+  for (unsigned int idx_out = 0; idx_out < n_features; idx_out++)
+    {
+      //input_vars[idx_out] = vars_raw[idx_out];
+      //cout << "Raw value:\t" <<vars_raw[idx_out] << ".\t";
+      
+      //  input_vars[idx_out] = (vars_raw[idx_out] & 0x3FFFF); // Only keep the 18 least significant bits
+      // Conversion to input_t precision:
+      input_vars[idx_out] = vars_raw[idx_out]; 
+
+      // Write new variable
+      //fprintf(fOut, "%f ", input_vars[idx_out]);
+      // cout << "Converting to:\t" << input_vars[idx_out] << ".\t";
+    }
+
 }
 
 /***********************************************************************/
@@ -73,18 +80,36 @@ void unpack_input_vars(vector<float>  vars_raw, input_arr_t input_vars){
 
 
 int main(){
-	vector< vector<float> > vars_raw = read_vars_from_file();
-	cout<<"size:"<<vars_raw.size()<<endl;
-	for (int i = 0; i < events_in_file; i++){
-	  for (int j = 0; j < taus_per_event; j++){
-	    input_arr_t v;
-	    unpack_input_vars(vars_raw[j], v);
-	    score_arr_t score;
-	    myproject(v, score);
-	    cout << "score:\t" << score[0] << endl;
-	  }	
+  vector< vector<float> > vars_raw = read_vars_from_file();
+  
+  // Create duplicate file (needed later for writing BDT output)                                                                                                               
+  FILE *fOut;
+  
+  fOut = fopen("output.txt", "w");
+  
+  if (fOut == NULL) 
+    {
+      printf("\n Error opening file");
+    }
+  
+  //	cout<<"size:"<<vars_raw.size()<<endl;
+  
+  for (int i = 0; i < events_in_file; i++){
+    for (int j = 0; j < taus_per_event; j++){
+      input_arr_t v;
+      unpack_input_vars(vars_raw[j], v);
+
+      for (unsigned int idx_out = 0; idx_out < n_features; idx_out++)
+	{
+	  fprintf(fOut, "%18.8f ", (float) vars_raw[j][idx_out]); 
 	}
-	return 0;
+      score_arr_t score;
+      myproject(v, score);
+      fprintf(fOut, "%18.8f\n", (float) score[0]);
+    }	
+  }
+  fclose(fOut);
+  return 0;
 }
 
 /***********************************************************************/

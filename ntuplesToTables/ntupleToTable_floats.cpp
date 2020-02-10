@@ -22,7 +22,7 @@
 #define NTUPLE_TO_TABLE_C_INCL
 
 #define events_in_file (1)
-#define taus_per_event (5)
+#define taus_per_event (330)
 #define n_features (9)
 
 
@@ -37,7 +37,8 @@ vector<vector<Double_t>> floatTableFromTree(void)
       printf("ERROR opening file");
     }
 
-  TFile *inputFile = TFile::Open("/afs/cern.ch/work/s/skkwan/public/triggerDevel/apr2019/CMSSW_10_5_0_pre1/src/L1Trigger/phase2L1BTagAnalyzer/tau_exercise/ntuples/newTauZL1PtCut10/ggH.root");
+  //  TFile *inputFile = TFile::Open("/afs/cern.ch/work/s/skkwan/public/triggerDevel/apr2019/CMSSW_10_5_0_pre1/src/L1Trigger/phase2L1BTagAnalyzer/tau_exercise/ntuples/2020_Feb_06-ggHtautau_200PU_MINI.root");
+  TFile *inputFile = TFile::Open("analyzer-GluGluHToTauTau_M125_14TeV_powheg_pythia8.root");
   TTree *inputTree = (TTree*) inputFile->Get("L1TauAnalyzer/efficiencyTree");
 
 
@@ -63,7 +64,7 @@ vector<vector<Double_t>> floatTableFromTree(void)
   vector<vector<Double_t>> v;
   int tokens_per_event = taus_per_event * n_features;
 
-  for (int i = 0; i < 5; i++)
+  for (int i = 0; i < (events_in_file * taus_per_event) ; i++)
     {
       inputTree->GetEntry(i);
 
