@@ -21,9 +21,9 @@
 #ifndef NTUPLE_TO_TABLE_C_INCL
 #define NTUPLE_TO_TABLE_C_INCL
 
-#define events_in_file (1)
-#define taus_per_event (330)
-#define n_features (9)
+#define n_events (10) // This macro may be changed in the function
+#define n_taus (20)  // This macro may be changed in the function
+#define n_features (7)
 
 
 /************************************************************/
@@ -46,10 +46,13 @@ vector<vector<Double_t>> floatTableFromTree(void)
   Double_t l1DM;
   Double_t l1PVDZ;
   Double_t l1HoE, l1EoH;
-  Double_t l1TauZ;
-  Double_t l1ChargedIso;
+  
+  Int_t event;
+  Double_t l1Discriminant;
 
-  // Set branch addresses                                                                                                                          
+  // Set branch addresses
+  inputTree->SetBranchAddress("event", &event);
+
   inputTree->SetBranchAddress("l1Pt", &l1Pt);
   inputTree->SetBranchAddress("l1Eta", &l1Eta);
   inputTree->SetBranchAddress("l1StripPt", &l1StripPt);
@@ -57,19 +60,23 @@ vector<vector<Double_t>> floatTableFromTree(void)
   inputTree->SetBranchAddress("l1PVDZ", &l1PVDZ);
   inputTree->SetBranchAddress("l1HoE", &l1HoE);
   inputTree->SetBranchAddress("l1EoH", &l1EoH);
-  inputTree->SetBranchAddress("l1TauZ", &l1TauZ);
-  inputTree->SetBranchAddress("l1ChargedIso", &l1ChargedIso);
+
+  inputTree->SetBranchAddress("l1Discriminant", &l1Discriminant);
 
   // Declare table
   vector<vector<Double_t>> v;
-  int tokens_per_event = taus_per_event * n_features;
+  //  int tokens_per_event = taus_per_event * n_features;
 
-  for (int i = 0; i < (events_in_file * taus_per_event) ; i++)
+  inputTree->GetEntry(0);
+  int currentEvent = event;
+  
+  for (int i = 0; i < n_taus; i++)
     {
       inputTree->GetEntry(i);
 
       vector<Double_t>  vars;
       
+      vars.push_back((Double_t) event);
       vars.push_back(l1Pt);
       vars.push_back(l1Eta);
       vars.push_back(l1StripPt);
@@ -77,15 +84,13 @@ vector<vector<Double_t>> floatTableFromTree(void)
       vars.push_back(l1PVDZ);
       vars.push_back(l1HoE);
       vars.push_back(l1EoH);
-      vars.push_back(l1TauZ);
-      vars.push_back(l1ChargedIso);
-      
-      // Push back to vars
+      vars.push_back(l1Discriminant);
       
       v.push_back(vars);
+
+
     }
 
-  //  for (Int_t i = 0; i < inputTree->GetEntries(); i++ ) {                                                        
   return v;
 }
 
@@ -105,13 +110,20 @@ int writeTableToText(vector<vector<Double_t>> table,
       return 1;
     }
 
+  // Write the header
+  fprintf(fp, "# Event l1Pt l1Eta l1StripPt l1DM  l1PVDZ  l1HoE  l1EoH  l1Discriminant\n");
+
   for (int i = 0; i < table.size(); i++)
     {
       for (int j = 0; j < table[i].size(); j++)
 	{
 	  //	  fprintf(fp, "%08x", (unsigned int) table[i][j] & 0xFF);
 	  //	  printf("Converting %f to %i, which is %08x in hex.\n", table[i][j], (unsigned int) table[i][j], (unsigned int) table[i][j] & 0xFF);
-	  fprintf(fp, "%f", table[i][j]);
+	  if (j == 0)
+	    fprintf(fp, "%i", (int) table[i][0]);
+	  else
+	    fprintf(fp, "%f", table[i][j]);
+	  
 	  // Put space in-between the entries
 	  if (j < (table[i].size() - 1))
 	    fprintf(fp, " ");
@@ -133,7 +145,7 @@ int ntupleToTable_floats()
   vector<vector<Double_t>> vars = floatTableFromTree();
 
   
-  writeTableToText(vars, "outputFloats.txt");
+  writeTableToText(vars, "input_realVals.txt");
 
   return 0;
 }
