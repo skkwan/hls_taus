@@ -9,9 +9,10 @@
 #include <string>
 
 using namespace std;
-#define n_taus (10)
-#define n_tauBranches (9)  // event, seven BDT variables, and the TMVA discriminant
-#define n_variables (7)
+
+#define events_in_file (1)
+#define taus_per_event (5)
+#define n_features (7)
 
 /***********************************************************************/
 
@@ -19,44 +20,52 @@ using namespace std;
    text file. */
 
 vector<vector<float>> read_vars_from_file(void){
-
-  // Open the input file
   ifstream inFile;
-  inFile.open("input_realVals.txt");
-  
-  // Skip the first 1000 characters or the first newline character,
-  // whichever comes first.
-  inFile.ignore(1000, '\n');
+  inFile.open("/afs/cern.ch/work/s/skkwan/public/triggerDevel/hls_taus/input_realVals.txt");//open the input file
 
-  stringstream strStream;
-  strStream << inFile.rdbuf();//read the file
-  string str = strStream.str();//str holds the content of the file
-  string buf; // Have a buffer string
-  stringstream ss(str); // Insert the string into a stream
-  vector<string> tokens; // Create vector to hold our words
-  while (ss >> buf)
-    tokens.push_back(buf);
-  vector<vector<float> > v;
+  vector<string> tokens; // Create vector to hold all of the tokens
   
-  for (int i = 0; i < n_taus ; i++){
-    vector<float> v_row;
-    for (int j = 0; j < n_tauBranches; j++){
-      unsigned int idx = (i * n_tauBranches) + j;
-      stringstream ss2;
-      float x;
-      ss2 << tokens[idx].c_str();
-      ss2 >> x;
-      v_row.push_back(x);
+  string line;
+  string substr;
+  while (getline(inFile, line, '\n'))
+    {
+      std::cout<< line << std::endl;
+      istringstream ss(line);
 
-      if (j == (n_tauBranches - 1))
-	printf("Last row element is %f\n", x);
-      else
-	printf("Row %i, column %i, variable is %f\n", i, j, x);
-      
+      while (getline(ss, substr, '\t'))
+	{
+	  tokens.push_back(substr);
+	  std::cout << substr << std::endl;
+	}
     }
-    v.push_back(v_row);
-  }
-  
+
+  // Now parse the tokens into a 2D array
+  vector<vector<float> > v;
+  int tokens_per_event = taus_per_event*n_features;
+
+  // Loop throgh events in file
+  for (int i = 0; i < events_in_file; i++)
+    {
+      // Loop through taus in each event
+      for (int j = 0; j < taus_per_event; j++)
+	{
+	  vector<float> vars;
+	  for (int k = 0; k < n_features; k++)
+	    {
+	      unsigned int idx = (i * tokens_per_event) + (j * n_features) + k;
+	      std::cout << "idx: " << idx << ". ";
+	      stringstream ss2;
+	      float x;
+	      ss2 << tokens[idx].c_str() ;
+	      ss2 >> x;
+	      cout << x << " ";
+	      vars.push_back(x);
+	      
+	    }
+	  v.push_back(vars);
+	  cout << endl;
+	}
+    }
   return v;
 }
 
@@ -65,77 +74,47 @@ vector<vector<float>> read_vars_from_file(void){
 /* Takes a vector of floats vars_raw and stores them in an input_arr_t
    object input_vars. */
 
-void unpack_input_vars(vector<float> row_raw, input_arr_t input_vars, int event, float l1Discriminant){
+void unpack_input_vars(vector<float>  vars_raw, input_arr_t input_vars){
+  for (unsigned int idx_out = 0; idx_out < n_features; idx_out++){
+    //input_vars[idx_out] = vars_raw[idx_out];
+    cout << "Raw value: " <<vars_raw[idx_out] << ". ";
+    //  input_vars[idx_out] = (vars_raw[idx_out] & 0x3FFFF); // Only keep the 18 least significant bits
 
-  event = (int) row_raw[0];
-  l1Discriminant = (float) row_raw[n_tauBranches - 1];
-
-  printf("[Unpack:] Event is %i. \n", event);
-
-  // v keeps track of which BDT input variable we are on.
-  for (unsigned int v = 0; v < n_variables; v++)
-    {
-      //input_vars[idx_out] = vars_raw[idx_out];
-      //cout << "Raw value:\t" <<vars_raw[idx_out] << ".\t";
-      
-      //  input_vars[idx_out] = (vars_raw[idx_out] & 0x3FFFF); // Only keep the 18 least significant bits
-
-      // +1 offset because Event number is in the first column.
-      printf("[Unpack:] Variable number %i = %f\n", v, row_raw[v+1]);
-      input_vars[v] = row_raw[v+1]; 
-
-      // cout << "Converting to:\t" << input_vars[idx_out] << ".\t";
-    }
-  printf("[Unpack:] l1Discriminant is %f. \n", l1Discriminant);
+    // Conversion to input_t precision:
+    input_vars[idx_out] = vars_raw[idx_out]; 
+    cout << "Converting to: " << input_vars[idx_out] << "\n";
+  }
+  cout << endl;
 }
 
 /***********************************************************************/
 
 
-
 int main(){
   vector< vector<float> > vars_raw = read_vars_from_file();
-  
+  cout<<"size:"<<vars_raw.size()<<endl;
+
+  // Initialize file to write to
   FILE *fOut;
-  
-  fOut = fopen("output.txt", "w");
-  
+  fOut = fopen("/afs/cern.ch/work/s/skkwan/public/triggerDevel/hls_taus/hlsBDTscore.txt", "w");
   if (fOut == NULL) 
-    {
-      printf("\n Error opening file");
+    std::cout << "WARNING: Error opening file" << std::endl;
+  fprintf(fOut, "# HLS BDT score\n");
+
+  for (int i = 0; i < events_in_file; i++){
+    for (int j = 0; j < taus_per_event; j++){
+      input_arr_t v;
+      unpack_input_vars(vars_raw[j], v);
+      score_arr_t score;
+      myproject(v, score);
+      cout << "score:\t" << score[0] << endl;
+
+      // Also write the score to the file, casting it to a float
+      fprintf(fOut, "%f\n", (float) score[0]);
     }
-  
-  //	cout<<"size:"<<vars_raw.size()<<endl;
-  
-  // Write header
-  fprintf(fOut, "# Event  l1Pt  l1Eta  l1StripPt  l1DM  l1PVDZ  l1HoE  l1EoH  l1Discriminant  csim-l1Discriminant\n");
-
-  for (int i = 0; i < n_taus; i++){
-    int event;
-    input_arr_t v;
-    float l1Discriminant;
-    unpack_input_vars(vars_raw[i], v, event, l1Discriminant);
-
-    fprintf(fOut, "%i ", event);
-    printf("[[[Main:]]] Event %i\n", event);
-    for (unsigned int j = 0; j < n_variables; j++)
-      {
-	printf("[[[Main:]]] Row %i and variable %j = %f\n", i, j, (float) v[i][j]);
-	
-	fprintf(fOut, "%18.8f ", (float) v[i][j]); 
-      }
-    
-    fprintf(fOut, "%f", l1Discriminant);
-    printf("[[[Main:]]] Discr is %f\n", l1Discriminant); 
-    
-    score_arr_t score;
-    myproject(v, score);
-    printf("[[[Main:]]] Score is %f\n", (float) score[0]);
-    fprintf(fOut, "%18.8f\n", (float) score[0]);
-  }	
-
-  fclose(fOut);
+  }
   return 0;
 }
+
 
 /***********************************************************************/

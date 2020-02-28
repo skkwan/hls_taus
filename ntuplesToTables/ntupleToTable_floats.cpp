@@ -21,14 +21,14 @@
 #ifndef NTUPLE_TO_TABLE_C_INCL
 #define NTUPLE_TO_TABLE_C_INCL
 
-#define n_events (10) // This macro may be changed in the function
-#define n_taus (20)  // This macro may be changed in the function
+#define n_events (1)
+#define n_taus (20) 
 #define n_features (7)
 
 
 /************************************************************/
 
-vector<vector<Double_t>> floatTableFromTree(void)
+vector<vector<Double_t>> floatTableFromTree(bool writeEventNumber, bool writeTMVAScore)
 {
   // Create file
   FILE *fp = fopen("table.txt", "w");
@@ -65,7 +65,6 @@ vector<vector<Double_t>> floatTableFromTree(void)
 
   // Declare table
   vector<vector<Double_t>> v;
-  //  int tokens_per_event = taus_per_event * n_features;
 
   inputTree->GetEntry(0);
   int currentEvent = event;
@@ -74,9 +73,11 @@ vector<vector<Double_t>> floatTableFromTree(void)
     {
       inputTree->GetEntry(i);
 
-      vector<Double_t>  vars;
-      
-      vars.push_back((Double_t) event);
+      vector<Double_t> vars;
+
+      if (writeEventNumber)
+	vars.push_back((Double_t) event);
+
       vars.push_back(l1Pt);
       vars.push_back(l1Eta);
       vars.push_back(l1StripPt);
@@ -84,10 +85,11 @@ vector<vector<Double_t>> floatTableFromTree(void)
       vars.push_back(l1PVDZ);
       vars.push_back(l1HoE);
       vars.push_back(l1EoH);
-      vars.push_back(l1Discriminant);
+
+      if (writeTMVAScore)
+	vars.push_back(l1Discriminant);
       
       v.push_back(vars);
-
 
     }
 
@@ -99,7 +101,7 @@ vector<vector<Double_t>> floatTableFromTree(void)
 
 /* Write table (vector of vectors) of unsigned ints to
    output .txt file outFile.  */
-int writeTableToText(vector<vector<Double_t>> table,
+int writeTableToText(vector<vector<Double_t>> table, string header,
 		     TString outFile)
 {
   // Create file
@@ -111,7 +113,7 @@ int writeTableToText(vector<vector<Double_t>> table,
     }
 
   // Write the header
-  fprintf(fp, "# Event l1Pt l1Eta l1StripPt l1DM  l1PVDZ  l1HoE  l1EoH  l1Discriminant\n");
+  fprintf(fp, "%s", header.c_str());
 
   for (int i = 0; i < table.size(); i++)
     {
@@ -119,14 +121,11 @@ int writeTableToText(vector<vector<Double_t>> table,
 	{
 	  //	  fprintf(fp, "%08x", (unsigned int) table[i][j] & 0xFF);
 	  //	  printf("Converting %f to %i, which is %08x in hex.\n", table[i][j], (unsigned int) table[i][j], (unsigned int) table[i][j] & 0xFF);
-	  if (j == 0)
-	    fprintf(fp, "%i", (int) table[i][0]);
-	  else
-	    fprintf(fp, "%f", table[i][j]);
+	  fprintf(fp, "%f", table[i][j]);
 	  
-	  // Put space in-between the entries
+	  // Put tab in-between the entries
 	  if (j < (table[i].size() - 1))
-	    fprintf(fp, " ");
+	    fprintf(fp, "\t");
 	}
       
       // Put newline after each row
@@ -142,10 +141,14 @@ int writeTableToText(vector<vector<Double_t>> table,
 
 int ntupleToTable_floats()
 {
-  vector<vector<Double_t>> vars = floatTableFromTree();
+  vector<vector<Double_t>> vars = floatTableFromTree(false, false);
+  vector<vector<Double_t>> eventVarsScore = floatTableFromTree(true, true);
 
-  
-  writeTableToText(vars, "input_realVals.txt");
+  string header1 = ""; // "#l1Pt\t l1Eta\t l1StripPt\t l1DM\t l1PVDZ\t l1HoE\t l1EoH\n";
+  string header2 = "#Event\t l1Pt\t l1Eta\t l1StripPt\t l1DM\t l1PVDZ\t l1HoE\t l1EoH\t l1Discriminant\n";
+
+  writeTableToText(vars, header1, "input_realVals.txt");
+  writeTableToText(eventVarsScore, header2, "all_realVals.txt");
 
   return 0;
 }

@@ -13,7 +13,7 @@ add_files hls_taus/myproject.h
 add_files -tb hls_taus/testbench.cpp -cflags "-std=c++0x"
 add_files hls_taus/parameters.h
 open_solution "solution1"
-set_part {xc7vx690tffg1927-2} -tool vivado
+set_part {xcvu9p-flga2104-2-e} -tool vivado
 create_clock -period 4.12 -name default
 #source "./hls_taus/solution1/directives.tcl"
 #csim_design -argv {-std=c++11} -compiler gcc

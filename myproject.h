@@ -27,7 +27,7 @@
 #include "parameters.h"
 
 // Prototype of top level function for C-synthesis
-ap_fixed<18,8> myproject(
+void myproject(
 	input_arr_t data,
 	score_arr_t score);
 #endif
